@@ -8,7 +8,10 @@ const path = require('path');
 dotenv.config();
 
 // Connect to database
-connectDB();
+const connectDB = require('../src/config/database')
+const app = require('../src/app')
+
+connectDB()
 
 const app = express();
 
