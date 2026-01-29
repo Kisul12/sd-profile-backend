@@ -1,12 +1,10 @@
-const app = require('../src/app');
+const connectDB = require('../src/config/database')
+const app = require('../src/app')
 
-// For Vercel, we export the app
-module.exports = app;
+console.log('🚀 Function invoked')
 
-// For local development
-if (require.main === module) {
-    const PORT = process.env.PORT || 5000;
-    app.listen(PORT, () => {
-        console.log(`Server running on port ${PORT}`);
-    });
-}
+connectDB()
+    .then(() => console.log('✅ MongoDB connected'))
+    .catch((err) => console.error('❌ MongoDB error:', err))
+
+module.exports = app
